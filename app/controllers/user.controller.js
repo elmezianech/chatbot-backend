@@ -1,3 +1,10 @@
+const config = require("../config/auth.config");
+const db = require("../models");
+const User = db.user;
+const Role = db.role;
+const Session = require('../models/session.model');
+
+
 exports.allAccess = (req, res)=> {
     res.status(200).json("Public Content.");
 };
