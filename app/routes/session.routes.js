@@ -20,4 +20,6 @@ module.exports = function(app){
     // Route to retrieve chat sessions for a user
     app.get('/api/users/:userId/sessions', controller.getUserSessions);
 
+    app.post('/api/sessions/:sessionId/delete', controller.deleteSession);
+
 }

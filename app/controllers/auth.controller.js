@@ -64,11 +64,11 @@ exports.signup = async (req, res) => {
   
       console.log("User authenticated successfully");
   
-      // Generate token
-      const token = jwt.sign({ id: user.id }, config.secret, { expiresIn: 86400 }); // 24 hours
-  
-      // Get authorities
+      /// Get authorities
       const authorities = user.roles.map(role => "ROLE_" + role.name.toUpperCase());
+
+      // Generate token with roles
+      const token = jwt.sign({ id: user.id, roles: authorities }, config.secret, { expiresIn: 86400 }); // 24 hours
   
       console.log("Sending response with token:", token);
       res.status(200).json({
